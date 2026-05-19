@@ -19,7 +19,7 @@ export async function GET() {
 
   if (apiKey) {
     try {
-      const { word, challenge, quote, quiz } =
+      const { word, challenge, quote, question, quiz } =
         await generatePayloadWithGemini(dateKey, apiKey);
       const payload: DailyPayload = {
         generatedAt: new Date().toISOString(),
@@ -28,6 +28,7 @@ export async function GET() {
         word,
         challenge,
         quote,
+        question,
         quiz,
       };
       return Response.json(payload);

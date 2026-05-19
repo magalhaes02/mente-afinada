@@ -1,5 +1,6 @@
 import type {
   ExplainChallenge,
+  PhilosophicalQuestion,
   Quote,
   QuizQuestion,
   Word,
@@ -11,7 +12,7 @@ const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models
 
 const SYSTEM_PROMPT = `És um curador de cultura geral e linguagem culta para um leitor português europeu (PT-PT) que quer pensar com mais clareza e expressar-se com mais precisão.
 
-OBJETIVO: gerar num único turno (A) palavra do dia, (B) desafio de explicação, (C) citação de livro, (D) quiz de 5 perguntas.
+OBJETIVO: gerar num único turno (A) palavra do dia, (B) desafio de explicação, (C) citação de livro, (D) pergunta filosófica, (E) quiz de 5 perguntas.
 
 FOCO: vocabulário formal de uso real (não palavras raras que ninguém usa), conceitos que pessoas cultas conhecem, e literatura mundial e portuguesa.
 
@@ -61,7 +62,27 @@ Inclui:
 Autores fiáveis: Pessoa (e heterónimos), Saramago, Eça de Queirós, Lobo Antunes, Camões, Sócrates/Platão, Nietzsche, Sartre, de Beauvoir, Camus, Marx, Hegel, Descartes, Dostoiévski, Tolstoi, Kafka, Borges, García Márquez, Shakespeare, Dickens, Austen, Wittgenstein, Ortega y Gasset, Wilde.
 
 ================================
-PARTE D — QUIZ (5 PERGUNTAS)
+PARTE D — PERGUNTA FILOSÓFICA
+================================
+
+Uma pergunta filosófica genuína que faça o leitor parar e pensar. NÃO perguntas escolares com resposta certa — perguntas abertas, com várias respostas defensáveis, que confrontam o leitor com algo que talvez nunca tenha pensado a sério.
+
+Inclui:
+- question: a pergunta em si (1 frase, direta, sem rodeios)
+- theme: tema único curto (ex: "Identidade", "Liberdade", "Ética", "Felicidade")
+- whyItMatters: porque é que esta pergunta importa — qual é a consequência prática de a responder bem ou mal (2-3 frases)
+- trapAnswer: a resposta fácil/típica que muita gente daria sem pensar — a armadilha
+- perspectives: 2-4 perspetivas filosóficas distintas, cada uma com:
+  - name: nome do pensador ou escola (ex: "Locke", "Estoicos", "Utilitarismo")
+  - view: o que essa perspetiva diz sobre a pergunta (2-3 frases)
+- pushFurther: pergunta de seguimento ainda mais difícil, para o leitor levar consigo
+
+Temas a explorar: identidade pessoal, livre-arbítrio, ética (trolley problem, anel de Giges), realidade (simulação, sonho), sofrimento, felicidade, liberdade negativa vs positiva, finitude, autoconhecimento, justiça, amor, legado, perdão, mérito vs sorte, natureza humana, conhecimento do outro.
+
+Pensadores fiáveis a citar: Sócrates, Platão, Aristóteles, Estoicos, Epicuro, Kant, Mill, Bentham, Nietzsche, Sartre, Camus, Heidegger, Wittgenstein, Locke, Hume, Schopenhauer, Spinoza, Hegel, Foucault, Berlin, Sandel, Rawls, Parfit, Lévinas, Hannah Arendt, Jung, Freud, Budismo, Tocqueville, Foot.
+
+================================
+PARTE E — QUIZ (5 PERGUNTAS)
 ================================
 
 5 perguntas de escolha múltipla com 4 opções cada, testando:
@@ -114,6 +135,18 @@ FORMATO OBRIGATÓRIO (apenas JSON, sem markdown, sem \`\`\`)
     "context": "Contexto do autor/livro/frase, 2-3 frases.",
     "theme": "Tema único curto"
   },
+  "question": {
+    "question": "Pergunta filosófica direta.",
+    "theme": "Tema único curto",
+    "whyItMatters": "Porque importa, 2-3 frases.",
+    "trapAnswer": "Resposta fácil/típica que muita gente daria.",
+    "perspectives": [
+      {"name": "Pensador ou escola", "view": "O que diz sobre a pergunta, 2-3 frases."},
+      {"name": "Outro pensador", "view": "Outra perspetiva."},
+      {"name": "Mais um", "view": "Mais uma."}
+    ],
+    "pushFurther": "Pergunta de seguimento mais difícil."
+  },
   "quiz": [
     {
       "question": "...",
@@ -126,10 +159,11 @@ FORMATO OBRIGATÓRIO (apenas JSON, sem markdown, sem \`\`\`)
 }
 
 REGRAS FINAIS:
-- TUDO em português europeu (PT-PT).
-- Surpreende — não repetes sempre as mesmas palavras/conceitos/citações.
-- A palavra, o conceito do desafio e a citação devem ser de TEMAS DIFERENTES para variedade.
-- NUNCA inventes citações. Se não confias, usa um clássico que conheças bem.`;
+- TUDO em português europeu (PT-PT). NÃO "onipresente" — usa "omnipresente". NÃO "você" — usa "tu".
+- Surpreende — não repetes sempre as mesmas palavras/conceitos/citações/perguntas.
+- A palavra, o conceito do desafio, a citação e a pergunta filosófica devem ser de TEMAS DIFERENTES para variedade.
+- NUNCA inventes citações nem livros. Se não confias, usa um clássico que conheças bem.
+- Perspectivas filosóficas têm de ser ATRIBUÍDAS corretamente. Não inventes posições.`;
 
 type GeminiResponse = {
   candidates?: {
@@ -202,6 +236,35 @@ function parseQuote(raw: unknown): Quote {
   };
 }
 
+function parseQuestion(raw: unknown): PhilosophicalQuestion {
+  const q = (raw ?? {}) as Record<string, unknown>;
+  if (!q.question || !q.theme) {
+    throw new Error("Pergunta filosófica inválida na resposta da Gemini");
+  }
+  const perspectives = Array.isArray(q.perspectives)
+    ? (q.perspectives as unknown[])
+        .map((p) => {
+          const pp = (p ?? {}) as Record<string, unknown>;
+          return {
+            name: String(pp.name ?? "").trim(),
+            view: String(pp.view ?? "").trim(),
+          };
+        })
+        .filter((p) => p.name && p.view)
+    : [];
+  if (perspectives.length < 2) {
+    throw new Error("Pergunta filosófica sem perspetivas suficientes");
+  }
+  return {
+    question: String(q.question).trim(),
+    theme: String(q.theme).trim(),
+    whyItMatters: String(q.whyItMatters ?? "").trim(),
+    trapAnswer: String(q.trapAnswer ?? "").trim(),
+    perspectives,
+    pushFurther: String(q.pushFurther ?? "").trim(),
+  };
+}
+
 function parseQuiz(raw: unknown): QuizQuestion[] {
   if (!Array.isArray(raw)) throw new Error("Quiz inválido");
   const out: QuizQuestion[] = [];
@@ -246,6 +309,7 @@ function parsePayloadJSON(text: string): {
   word: Word;
   challenge: ExplainChallenge;
   quote: Quote;
+  question: PhilosophicalQuestion;
   quiz: QuizQuestion[];
 } {
   let cleaned = text.trim();
@@ -264,6 +328,7 @@ function parsePayloadJSON(text: string): {
     word: parseWord(parsed.word),
     challenge: parseChallenge(parsed.challenge),
     quote: parseQuote(parsed.quote),
+    question: parseQuestion(parsed.question),
     quiz: shuffleQuizOptions(parseQuiz(parsed.quiz)),
   };
 }
@@ -275,6 +340,7 @@ export async function generatePayloadWithGemini(
   word: Word;
   challenge: ExplainChallenge;
   quote: Quote;
+  question: PhilosophicalQuestion;
   quiz: QuizQuestion[];
 }> {
   const lisbonDate = new Date().toLocaleDateString("pt-PT", {

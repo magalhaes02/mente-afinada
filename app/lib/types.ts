@@ -26,6 +26,20 @@ export type Quote = {
   theme: string;
 };
 
+export type PhilosophicalPerspective = {
+  name: string;
+  view: string;
+};
+
+export type PhilosophicalQuestion = {
+  question: string;
+  theme: string;
+  whyItMatters: string;
+  trapAnswer: string;
+  perspectives: PhilosophicalPerspective[];
+  pushFurther: string;
+};
+
 export type QuizQuestion = {
   question: string;
   options: string[];
@@ -40,6 +54,7 @@ export type DailyPayload = {
   word: Word;
   challenge: ExplainChallenge;
   quote: Quote;
+  question: PhilosophicalQuestion;
   quiz: QuizQuestion[];
   fallbackReason?: string;
 };

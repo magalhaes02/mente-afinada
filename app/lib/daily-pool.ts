@@ -6,6 +6,7 @@ import {
   CHALLENGE_POOL,
 } from "./lexico-pool";
 import { buildPoolQuote, QUOTE_POOL } from "./citacoes-pool";
+import { buildPoolQuestion } from "./perguntas-pool";
 
 function hashString(s: string): number {
   let h = 5381;
@@ -114,6 +115,7 @@ export function buildPoolPayload(
     word: buildPoolWord(dateKey),
     challenge: buildPoolChallenge(dateKey),
     quote: buildPoolQuote(dateKey),
+    question: buildPoolQuestion(dateKey),
     quiz: buildFallbackQuiz(dateKey),
     fallbackReason: reason,
   };

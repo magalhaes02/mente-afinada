@@ -346,6 +346,315 @@ export const WORD_POOL: Word[] = [
     usage:
       "Cuidado com a inflação. Hubris é só quando há queda à vista.",
   },
+  {
+    word: "Idiossincrasia",
+    formalDefinition:
+      "Traço de carácter ou comportamento particular e distintivo de uma pessoa ou grupo.",
+    etymology: "Do grego ídios (próprio) + synkrasis (mistura).",
+    example:
+      "Tem a idiossincrasia de só beber chá em chávenas brancas — não é mania, é parte de quem é.",
+    synonyms: [
+      { word: "Peculiaridade", nuance: "Mais geral; idiossincrasia é mais identitária." },
+      { word: "Singularidade", nuance: "Foca-se em ser único; idiossincrasia foca-se no traço específico." },
+      { word: "Mania", nuance: "Pejorativo; idiossincrasia é neutro ou positivo." },
+    ],
+    usage:
+      "Reconhecer as idiossincrasias dos outros é mais maduro do que tentar normalizá-las.",
+  },
+  {
+    word: "Subterfúgio",
+    formalDefinition:
+      "Estratagema usado para evitar uma dificuldade ou esconder uma intenção verdadeira.",
+    example:
+      "Em vez de admitir que não sabia, recorreu a subterfúgios verbais até a conversa mudar.",
+    synonyms: [
+      { word: "Pretexto", nuance: "Mais simples; subterfúgio implica habilidade." },
+      { word: "Evasiva", nuance: "Foca-se na fuga; subterfúgio é a manobra ativa." },
+      { word: "Ardil", nuance: "Mais sinónimo de truque; subterfúgio é mais defensivo." },
+    ],
+    usage:
+      "Útil para diagnosticar discurso político: 'isso é um subterfúgio' é mais cirúrgico do que 'estás a desviar'.",
+  },
+  {
+    word: "Inefável",
+    formalDefinition:
+      "Que não se consegue exprimir por palavras devido à sua intensidade, beleza ou complexidade.",
+    example:
+      "A beleza do céu naquele entardecer era inefável — qualquer descrição minha falharia.",
+    synonyms: [
+      { word: "Indescritível", nuance: "Mais comum; inefável tem ressonância poética." },
+      { word: "Sublime", nuance: "Foca-se na grandeza; inefável foca-se na impossibilidade verbal." },
+    ],
+    usage:
+      "Use com moderação — usado em excesso, perde valor.",
+  },
+  {
+    word: "Ostracismo",
+    formalDefinition:
+      "Exclusão sistemática de um indivíduo de um grupo, por decisão coletiva tácita ou explícita.",
+    etymology:
+      "Do grego ostrakon — caco de cerâmica usado para votar a expulsão na Atenas antiga.",
+    example:
+      "Sofreu ostracismo na equipa depois de denunciar o esquema — ninguém o expulsou, mas deixou de ser convidado para tudo.",
+    synonyms: [
+      { word: "Exclusão", nuance: "Mais geral; ostracismo é sistemático e coletivo." },
+      { word: "Marginalização", nuance: "Foca-se em afastar para fora; ostracismo é deliberado." },
+    ],
+    usage:
+      "Útil para nomear dinâmicas sociais que parecem 'nada estar a acontecer' mas que excluem na prática.",
+  },
+  {
+    word: "Pernicioso",
+    formalDefinition:
+      "Que causa dano grave de forma subtil ou progressiva; nocivo sem ser óbvio.",
+    example:
+      "O efeito pernicioso das redes sociais na atenção é mais sério do que parece à primeira vista.",
+    synonyms: [
+      { word: "Nocivo", nuance: "Mais direto; pernicioso implica subtileza e progressão." },
+      { word: "Daninho", nuance: "Mais coloquial e geral." },
+      { word: "Deletério", nuance: "Quase sinónimo, mais técnico." },
+    ],
+    usage:
+      "Usa quando o dano não é óbvio à vista, mas acumula. Bom para crítica social.",
+  },
+  {
+    word: "Magnânimo",
+    formalDefinition:
+      "Que tem grandeza de alma; generoso com adversários ou com quem é mais fraco.",
+    etymology: "Do latim magnus (grande) + animus (alma).",
+    example:
+      "Foi magnânimo na vitória — em vez de humilhar o adversário, reconheceu o esforço dele.",
+    synonyms: [
+      { word: "Generoso", nuance: "Mais comum; magnânimo implica nobreza de carácter." },
+      { word: "Nobre", nuance: "Foca-se no carácter; magnânimo no gesto concreto." },
+    ],
+    usage:
+      "Reservado para gestos genuinamente elevados — não para qualquer ato bondoso.",
+  },
+  {
+    word: "Plausível",
+    formalDefinition:
+      "Que parece verdadeiro ou aceitável, embora não esteja provado.",
+    example:
+      "A explicação dele é plausível, mas precisamos de mais dados antes de a aceitar.",
+    synonyms: [
+      { word: "Verossímil", nuance: "Quase sinónimo; mais literário." },
+      { word: "Credível", nuance: "Implica que se acredita; plausível é só razoável." },
+    ],
+    usage:
+      "Em análise crítica, 'é plausível' é mais cuidadoso do que 'é verdade'.",
+  },
+  {
+    word: "Equânime",
+    formalDefinition:
+      "Que mantém equilíbrio e imparcialidade perante situações ou pessoas.",
+    example:
+      "Tem uma postura equânime em discussões — ouve todos os lados sem se inclinar prematuramente.",
+    synonyms: [
+      { word: "Imparcial", nuance: "Foca-se em não tomar partido; equânime tem mais serenidade." },
+      { word: "Sereno", nuance: "Mais emocional; equânime é mais intelectual." },
+    ],
+    usage:
+      "Bom para descrever um juiz, mediador, ou alguém com bom julgamento.",
+  },
+  {
+    word: "Anacrónico",
+    formalDefinition:
+      "Que não pertence à época em que aparece — fora do seu tempo.",
+    example:
+      "A ideia de honra duelística é anacrónica no século XXI.",
+    synonyms: [
+      { word: "Obsoleto", nuance: "Implica fora de uso; anacrónico é fora do tempo." },
+      { word: "Datado", nuance: "Mais ligeiro; anacrónico tem mais peso." },
+    ],
+    usage:
+      "Em crítica cultural, ajuda a nomear o que pertence a outra época sem julgar emocionalmente.",
+  },
+  {
+    word: "Truísmo",
+    formalDefinition:
+      "Afirmação tão evidente que dizê-la não acrescenta nada — verdade banal.",
+    example:
+      "'As pessoas são todas diferentes' é um truísmo — toda a gente sabe, ninguém aprende.",
+    synonyms: [
+      { word: "Banalidade", nuance: "Foca-se na vulgaridade; truísmo na obviedade lógica." },
+      { word: "Lugar-comum", nuance: "Mais sobre repetição; truísmo sobre obviedade." },
+    ],
+    usage:
+      "Usar para criticar declarações 'profundas' que na verdade não dizem nada.",
+  },
+  {
+    word: "Pleonasmo",
+    formalDefinition:
+      "Repetição desnecessária de uma ideia já contida no termo anterior.",
+    example:
+      "'Subir para cima' é um pleonasmo — subir já implica para cima.",
+    synonyms: [
+      { word: "Redundância", nuance: "Mais geral; pleonasmo é o caso linguístico." },
+    ],
+    usage:
+      "Bom para apontar excesso em texto: 'isto é pleonasmo' é mais técnico do que 'estás a repetir-te'.",
+  },
+  {
+    word: "Sofisma",
+    formalDefinition:
+      "Argumento que parece válido mas é intencionalmente falacioso para enganar.",
+    example:
+      "Aquela campanha publicitária é um sofisma — usa estatísticas verdadeiras para sugerir conclusão falsa.",
+    synonyms: [
+      { word: "Falácia", nuance: "Falácia pode ser involuntária; sofisma é intencional." },
+      { word: "Engano", nuance: "Mais geral; sofisma é argumentativo." },
+    ],
+    usage:
+      "Sofisma implica má-fé. Usa só quando o engano é deliberado.",
+  },
+  {
+    word: "Iníquo",
+    formalDefinition: "Profundamente injusto, contrário à equidade.",
+    example:
+      "É iníquo que duas pessoas com o mesmo trabalho sejam pagas tão diferente.",
+    synonyms: [
+      { word: "Injusto", nuance: "Mais comum; iníquo é mais forte e formal." },
+      { word: "Inequitativo", nuance: "Mais técnico, foca-se na desigualdade." },
+    ],
+    usage:
+      "Termo forte. Usa quando 'injusto' parece fraco para a gravidade.",
+  },
+  {
+    word: "Probidade",
+    formalDefinition:
+      "Integridade moral demonstrada em comportamentos consistentes ao longo do tempo.",
+    example:
+      "A probidade do antigo juiz é o que ainda hoje lhe garante respeito.",
+    synonyms: [
+      { word: "Honestidade", nuance: "Mais ligada à verdade; probidade à conduta global." },
+      { word: "Integridade", nuance: "Quase sinónimo; probidade tem ressonância institucional." },
+    ],
+    usage:
+      "Usado em contextos formais — referência, recomendação, biografia.",
+  },
+  {
+    word: "Tergiversar",
+    formalDefinition:
+      "Usar rodeios ou desvios para evitar dar uma resposta direta.",
+    example:
+      "Em vez de responder se sabia, o ministro tergiversou durante minutos.",
+    synonyms: [
+      { word: "Esquivar-se", nuance: "Foca-se na fuga; tergiversar implica volta com palavras." },
+      { word: "Evasivar", nuance: "Quase sinónimo, mais comum." },
+    ],
+    usage:
+      "Verbo de impacto. 'Está a tergiversar' soa mais informado do que 'está a fugir'.",
+  },
+  {
+    word: "Reticente",
+    formalDefinition:
+      "Que hesita em revelar pensamentos ou informação; cauteloso na expressão.",
+    example:
+      "Foi reticente em dar opinião antes de saber para que lado a chefia se inclinava.",
+    synonyms: [
+      { word: "Hesitante", nuance: "Mais emocional; reticente é mais deliberado." },
+      { word: "Cauteloso", nuance: "Foca-se na prudência; reticente na contenção verbal." },
+    ],
+    usage:
+      "Cuidado: muitos usam 'reticente' como 'relutante'. São diferentes.",
+  },
+  {
+    word: "Lacónico",
+    formalDefinition: "Que se exprime com poucas palavras; conciso e direto.",
+    etymology:
+      "Da Lacónia (região de Esparta), cujos habitantes eram famosos por falar pouco.",
+    example:
+      "A resposta dele foi lacónica: 'Não.' Sem explicação, sem amaciamento.",
+    synonyms: [
+      { word: "Conciso", nuance: "Mais neutro; lacónico tem peso de carácter." },
+      { word: "Sucinto", nuance: "Foca-se no resumo; lacónico no estilo pessoal." },
+    ],
+    usage:
+      "Não é pejorativo nem positivo — descreve estilo.",
+  },
+  {
+    word: "Prolixo",
+    formalDefinition: "Que se exprime com excesso de palavras; demasiado extenso.",
+    example: "O texto é prolixo — diz em 3 páginas o que cabia em meia.",
+    synonyms: [
+      { word: "Verboso", nuance: "Quase sinónimo, mais oral." },
+      { word: "Detalhista", nuance: "Pode ser positivo; prolixo é sempre crítico." },
+    ],
+    usage: "Oposto de lacónico. Usar com cuidado — é juízo.",
+  },
+  {
+    word: "Insidioso",
+    formalDefinition:
+      "Que age de forma traiçoeira, sem se mostrar, com efeito gradual e perigoso.",
+    example:
+      "A propaganda insidiosa muda opiniões sem que percebamos que fomos influenciados.",
+    synonyms: [
+      { word: "Traiçoeiro", nuance: "Mais ativo; insidioso é mais subtil." },
+      { word: "Pernicioso", nuance: "Foca-se no dano; insidioso no método escondido." },
+    ],
+    usage: "Boa palavra para nomear influências subtis que custam a detetar.",
+  },
+  {
+    word: "Inexorável",
+    formalDefinition: "Que não se pode deter, evitar nem suplicar contra.",
+    example: "O passar do tempo é inexorável — não importa quanto resistas.",
+    synonyms: [
+      { word: "Implacável", nuance: "Quase sinónimo; inexorável tem mais peso filosófico." },
+      { word: "Inevitável", nuance: "Mais frequente; inexorável é mais formal." },
+    ],
+    usage:
+      "Tem força — guarda-a para fenómenos verdadeiramente irreversíveis.",
+  },
+  {
+    word: "Veleidade",
+    formalDefinition:
+      "Desejo passageiro ou caprichoso, sem força ou compromisso real.",
+    example:
+      "Comprou um piano numa veleidade — passados dois meses, era só pó.",
+    synonyms: [
+      { word: "Capricho", nuance: "Mais coloquial; veleidade tem matiz de fraqueza de vontade." },
+      { word: "Impulso", nuance: "Mais momentâneo; veleidade pode durar mais." },
+    ],
+    usage: "Útil para nomear projetos pessoais que não duram nem 6 meses.",
+  },
+  {
+    word: "Profícuo",
+    formalDefinition: "Que produz resultado positivo; útil e proveitoso.",
+    example:
+      "A conversa foi profícua — saímos com 3 decisões claras e um plano.",
+    synonyms: [
+      { word: "Produtivo", nuance: "Mais comum; profícuo é mais formal." },
+      { word: "Fecundo", nuance: "Mais literário; profícuo é mais pragmático." },
+    ],
+    usage:
+      "Em escrita formal (relatórios, atas), eleva o tom.",
+  },
+  {
+    word: "Verossímil",
+    formalDefinition:
+      "Que tem aparência de verdadeiro; coerente o suficiente para ser plausível.",
+    example:
+      "A história é verossímil — não posso confirmá-la, mas todos os detalhes batem certo.",
+    synonyms: [
+      { word: "Plausível", nuance: "Quase sinónimo; verossímil tem mais peso literário." },
+      { word: "Credível", nuance: "Implica que se acredita; verossímil é apenas aparência de verdade." },
+    ],
+    usage:
+      "Em literatura e direito, verossimilhança é critério de avaliação central.",
+  },
+  {
+    word: "Galvanizar",
+    formalDefinition: "Estimular fortemente alguém à ação, frequentemente coletiva.",
+    example:
+      "O discurso galvanizou a equipa — passaram de cansados a empenhados em 10 minutos.",
+    synonyms: [
+      { word: "Mobilizar", nuance: "Foca-se em pôr em movimento; galvanizar tem energia adicional." },
+      { word: "Energizar", nuance: "Mais individual; galvanizar é mais coletivo." },
+    ],
+    usage:
+      "Usado em contextos de liderança, política, ativismo. Tem dramatismo.",
+  },
 ];
 
 export const CHALLENGE_POOL: ExplainChallenge[] = [

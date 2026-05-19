@@ -98,7 +98,7 @@ export default function Home() {
             fontWeight: 600,
           }}
         >
-          1 conceito · 1 palavra · 1 citação · 5 perguntas
+          1 conceito · 1 palavra · 1 citação · 1 pergunta · quiz
         </footer>
       </section>
     </main>

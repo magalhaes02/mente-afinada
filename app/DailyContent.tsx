@@ -5,6 +5,7 @@ import type { DailyPayload } from "./lib/types";
 import ChallengeCard from "./ChallengeCard";
 import WordCard from "./WordCard";
 import QuoteCard from "./QuoteCard";
+import PhilosophicalQuestionCard from "./PhilosophicalQuestionCard";
 import QuizSection from "./QuizSection";
 
 const CACHE_KEY = "mente-afinada-daily";
@@ -48,6 +49,7 @@ export default function DailyContent() {
       cached.word &&
       cached.challenge &&
       cached.quote &&
+      cached.question &&
       Array.isArray(cached.quiz)
     ) {
       setData(cached);
@@ -120,6 +122,7 @@ export default function DailyContent() {
       <ChallengeCard challenge={data.challenge} />
       <WordCard word={data.word} />
       <QuoteCard quote={data.quote} />
+      <PhilosophicalQuestionCard question={data.question} />
       <QuizSection quiz={data.quiz} />
       <p
         className="ma-sans"
