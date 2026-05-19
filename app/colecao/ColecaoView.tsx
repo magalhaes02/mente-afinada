@@ -92,10 +92,40 @@ export default function ColecaoView() {
         style={{
           display: "grid",
           gap: "10px",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr",
           marginBottom: "20px",
         }}
       >
+        <Link
+          href="/estatisticas"
+          className="ma-press"
+          style={{
+            padding: "14px",
+            borderRadius: "14px",
+            background:
+              "linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(244, 114, 182, 0.10))",
+            border: "1px solid rgba(245, 158, 11, 0.35)",
+            color: "var(--fg)",
+            textDecoration: "none",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+          }}
+        >
+          <span style={{ fontSize: "22px", lineHeight: 1 }}>📊</span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "13px", fontWeight: 800 }}
+          >
+            Progresso
+          </span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "11px", color: "var(--fg-muted)" }}
+          >
+            Badges e nível
+          </span>
+        </Link>
         <Link
           href="/historico"
           className="ma-press"

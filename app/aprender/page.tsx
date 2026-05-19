@@ -189,6 +189,70 @@ export default function AprenderPage() {
           </p>
         </header>
 
+        <div
+          style={{
+            display: "grid",
+            gap: "10px",
+            gridTemplateColumns: "1fr 1fr",
+            marginBottom: "20px",
+          }}
+        >
+          <Link
+            href="/procurar"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(168, 85, 247, 0.10))",
+              border: "1px solid rgba(96, 165, 250, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🔍</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Procurar tudo
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Em todas as secções de uma vez
+            </div>
+          </Link>
+          <Link
+            href="/temas"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(244, 114, 182, 0.18), rgba(168, 85, 247, 0.10))",
+              border: "1px solid rgba(244, 114, 182, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🏷️</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Por temas
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Cruzar conteúdo por tema
+            </div>
+          </Link>
+        </div>
+
         <ul
           style={{
             listStyle: "none",

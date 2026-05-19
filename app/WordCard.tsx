@@ -3,6 +3,7 @@
 import type { Word } from "./lib/types";
 import PronounceButton from "./PronounceButton";
 import FavoriteButton from "./FavoriteButton";
+import ConnectionsBlock from "./ConnectionsBlock";
 
 export default function WordCard({ word }: { word: Word }) {
   return (
@@ -172,6 +173,8 @@ export default function WordCard({ word }: { word: Word }) {
           💬 {word.usage}
         </div>
       )}
+
+      <ConnectionsBlock type="palavra" title={word.word} />
     </article>
   );
 }

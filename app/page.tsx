@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DailyContent from "./DailyContent";
 import StreakBadge from "./StreakBadge";
 import StreakCalendar from "./StreakCalendar";
@@ -86,6 +87,66 @@ export default function Home() {
             <StreakBadge />
           </div>
         </header>
+
+        <div
+          className="ma-sans"
+          style={{
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap",
+            marginBottom: "16px",
+          }}
+        >
+          <Link
+            href="/podcast"
+            className="ma-press"
+            style={{
+              padding: "8px 14px",
+              borderRadius: "999px",
+              background:
+                "linear-gradient(90deg, rgba(168, 85, 247, 0.22), rgba(244, 114, 182, 0.18))",
+              border: "1px solid rgba(168, 85, 247, 0.45)",
+              color: "#e9d5ff",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: 700,
+            }}
+          >
+            🎧 Ouvir hoje
+          </Link>
+          <Link
+            href="/podcast/citacoes"
+            className="ma-press"
+            style={{
+              padding: "8px 14px",
+              borderRadius: "999px",
+              background: "rgba(96, 165, 250, 0.15)",
+              border: "1px solid rgba(96, 165, 250, 0.4)",
+              color: "#bfdbfe",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: 700,
+            }}
+          >
+            📻 Citações narradas
+          </Link>
+          <Link
+            href="/procurar"
+            className="ma-press"
+            style={{
+              padding: "8px 14px",
+              borderRadius: "999px",
+              background: "rgba(148, 163, 184, 0.1)",
+              border: "1px solid rgba(148, 163, 184, 0.3)",
+              color: "var(--fg-muted)",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: 700,
+            }}
+          >
+            🔍 Procurar
+          </Link>
+        </div>
 
         <DailyContent />
 
