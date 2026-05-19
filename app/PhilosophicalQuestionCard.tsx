@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { PhilosophicalQuestion } from "./lib/types";
+import FavoriteButton from "./FavoriteButton";
 
 export default function PhilosophicalQuestionCard({
   question,
@@ -216,6 +217,16 @@ export default function PhilosophicalQuestionCard({
               </p>
             </Block>
           )}
+
+          <div style={{ marginTop: "18px" }}>
+            <FavoriteButton
+              type="pergunta"
+              id={question.question.toLowerCase().slice(0, 80)}
+              title={question.question}
+              subtitle={question.theme}
+              size="sm"
+            />
+          </div>
         </div>
       )}
     </article>

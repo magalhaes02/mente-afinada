@@ -1,5 +1,6 @@
 import DailyContent from "./DailyContent";
 import StreakBadge from "./StreakBadge";
+import StreakCalendar from "./StreakCalendar";
 
 export default function Home() {
   const todayLabel = new Date().toLocaleDateString("pt-PT", {
@@ -14,8 +15,8 @@ export default function Home() {
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top right, #1c1917, #0a0a14 50%, #020617)",
-        color: "#f5f5f4",
+          "radial-gradient(circle at top right, var(--bg-gradient-1), var(--bg-gradient-2) 50%, var(--bg-gradient-3))",
+        color: "var(--fg)",
         padding: "clamp(16px, 4vw, 40px)",
         paddingBottom: "calc(env(safe-area-inset-bottom) + 110px)",
       }}
@@ -58,7 +59,7 @@ export default function Home() {
                 margin: 0,
                 fontWeight: 800,
                 background:
-                  "linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #a855f7 100%)",
+                  "linear-gradient(135deg, var(--serif-color) 0%, #fbbf24 50%, #a855f7 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -71,7 +72,7 @@ export default function Home() {
               className="ma-sans"
               style={{
                 margin: "10px 0 0 0",
-                color: "#a8a29e",
+                color: "var(--fg-muted)",
                 fontSize: "clamp(13px, 3.6vw, 15px)",
                 fontWeight: 500,
                 lineHeight: 1.4,
@@ -88,12 +89,14 @@ export default function Home() {
 
         <DailyContent />
 
+        <StreakCalendar />
+
         <footer
           className="ma-sans"
           style={{
             marginTop: "40px",
             textAlign: "center",
-            color: "#57534e",
+            color: "var(--fg-soft)",
             fontSize: "clamp(11px, 3vw, 13px)",
             fontWeight: 600,
           }}

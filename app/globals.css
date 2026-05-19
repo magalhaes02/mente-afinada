@@ -1,6 +1,56 @@
 :root {
   --bg: #0a0a14;
+  --bg-gradient-1: #1c1917;
+  --bg-gradient-2: #0a0a14;
+  --bg-gradient-3: #020617;
   --fg: #f5f5f4;
+  --fg-muted: #a8a29e;
+  --fg-soft: #57534e;
+  --card-bg: rgba(15, 23, 42, 0.4);
+  --card-border: rgba(148, 163, 184, 0.15);
+  --serif-color: #f5f5f4;
+}
+
+[data-theme="claro"] {
+  --bg: #fafaf9;
+  --bg-gradient-1: #fefdfb;
+  --bg-gradient-2: #f5f5f4;
+  --bg-gradient-3: #e7e5e4;
+  --fg: #1c1917;
+  --fg-muted: #57534e;
+  --fg-soft: #a8a29e;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(28, 25, 23, 0.1);
+  --serif-color: #1c1917;
+}
+
+[data-theme="papel"] {
+  --bg: #f4ecd8;
+  --bg-gradient-1: #f7efd9;
+  --bg-gradient-2: #f1e9d2;
+  --bg-gradient-3: #e9dfc1;
+  --fg: #3b2e1e;
+  --fg-muted: #6b5d4b;
+  --fg-soft: #8a7d6c;
+  --card-bg: rgba(247, 239, 217, 0.8);
+  --card-border: rgba(91, 70, 41, 0.15);
+  --serif-color: #3b2e1e;
+}
+
+[data-font="pequena"] {
+  font-size: 14px;
+}
+
+[data-font="normal"] {
+  font-size: 16px;
+}
+
+[data-font="grande"] {
+  font-size: 18px;
+}
+
+[data-font="muito-grande"] {
+  font-size: 21px;
 }
 
 html {
@@ -87,4 +137,17 @@ h3 {
 
 .ma-reveal {
   animation: ma-reveal 0.35s ease-out;
+}
+
+/* Modo papel — leitura mais imersiva */
+[data-theme="papel"] body {
+  font-family: var(--font-fraunces), "Iowan Old Style", "Palatino", Georgia,
+    serif;
+  letter-spacing: 0;
+}
+
+[data-theme="papel"] .ma-paper-prose {
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.75;
 }

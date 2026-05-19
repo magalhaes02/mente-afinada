@@ -1,6 +1,8 @@
 "use client";
 
 import type { Word } from "./lib/types";
+import PronounceButton from "./PronounceButton";
+import FavoriteButton from "./FavoriteButton";
 
 export default function WordCard({ word }: { word: Word }) {
   return (
@@ -38,14 +40,32 @@ export default function WordCard({ word }: { word: Word }) {
         style={{
           fontSize: "clamp(32px, 8.5vw, 46px)",
           lineHeight: 1.0,
-          margin: "0 0 8px 0",
+          margin: "0 0 10px 0",
           fontWeight: 800,
-          color: "#f5f5f4",
+          color: "var(--fg)",
           letterSpacing: "-0.03em",
         }}
       >
         {word.word}
       </h2>
+
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          flexWrap: "wrap",
+          marginBottom: "14px",
+        }}
+      >
+        <PronounceButton text={word.word} />
+        <FavoriteButton
+          type="palavra"
+          id={word.word.toLowerCase()}
+          title={word.word}
+          subtitle={word.formalDefinition}
+          size="sm"
+        />
+      </div>
 
       <p
         style={{

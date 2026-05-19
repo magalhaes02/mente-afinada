@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ExplainChallenge } from "./lib/types";
+import FavoriteButton from "./FavoriteButton";
 
 export default function ChallengeCard({
   challenge,
@@ -191,6 +192,16 @@ export default function ChallengeCard({
               </p>
             </Block>
           )}
+
+          <div style={{ marginTop: "18px" }}>
+            <FavoriteButton
+              type="desafio"
+              id={challenge.concept.toLowerCase()}
+              title={challenge.concept}
+              subtitle={challenge.preciseAnswer}
+              size="sm"
+            />
+          </div>
         </div>
       )}
     </article>

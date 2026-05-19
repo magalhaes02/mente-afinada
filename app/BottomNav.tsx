@@ -5,13 +5,37 @@ import { usePathname } from "next/navigation";
 
 const TABS = [
   { href: "/", icon: "📅", label: "Hoje" },
-  { href: "/lexico", icon: "📖", label: "Léxico" },
-  { href: "/citacoes", icon: "📚", label: "Citações" },
-  { href: "/perguntas", icon: "🤔", label: "Perguntas" },
+  { href: "/aprender", icon: "📚", label: "Aprender" },
+  { href: "/colecao", icon: "⭐", label: "Coleção" },
+  { href: "/definicoes", icon: "⚙️", label: "Mais" },
 ] as const;
+
+const APRENDER_PREFIXES = [
+  "/aprender",
+  "/lexico",
+  "/citacoes",
+  "/perguntas",
+  "/falacias",
+  "/vieses",
+  "/escolas",
+  "/autores",
+  "/etimologia",
+  "/frases-cultas",
+  "/conceitos",
+  "/retorica",
+  "/proverbios",
+  "/marcos",
+];
 
 export default function BottomNav() {
   const pathname = usePathname();
+
+  const isActive = (href: string): boolean => {
+    if (href === "/") return pathname === "/";
+    if (href === "/aprender")
+      return APRENDER_PREFIXES.some((p) => pathname.startsWith(p));
+    return pathname.startsWith(href);
+  };
 
   return (
     <nav
@@ -23,7 +47,7 @@ export default function BottomNav() {
         right: 0,
         zIndex: 50,
         padding: "8px 12px calc(env(safe-area-inset-bottom) + 8px) 12px",
-        background: "rgba(10, 10, 20, 0.88)",
+        background: "color-mix(in srgb, var(--bg) 88%, transparent)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         borderTop: "1px solid rgba(245, 158, 11, 0.15)",
@@ -39,10 +63,7 @@ export default function BottomNav() {
         }}
       >
         {TABS.map((tab) => {
-          const active =
-            tab.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(tab.href);
+          const active = isActive(tab.href);
           return (
             <Link
               key={tab.href}
@@ -58,7 +79,7 @@ export default function BottomNav() {
                 background: active
                   ? "rgba(245, 158, 11, 0.18)"
                   : "transparent",
-                color: active ? "#fbbf24" : "#a8a29e",
+                color: active ? "#fbbf24" : "var(--fg-muted)",
                 textDecoration: "none",
                 fontWeight: 700,
                 fontSize: "11px",

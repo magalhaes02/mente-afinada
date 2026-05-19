@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 const STREAK_KEY = "mente-afinada-streak";
+const HISTORY_KEY = "mente-afinada-streak-history";
 
 type StreakState = {
   count: number;
@@ -34,6 +35,21 @@ function readStreak(): StreakState {
   }
 }
 
+export function readStreakHistory(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(HISTORY_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeStreakHistory(dates: string[]) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(HISTORY_KEY, JSON.stringify(dates));
+}
+
 export function markTodayCompleted(): StreakState {
   if (typeof window === "undefined") {
     return { count: 0, lastCompletedDate: null };
@@ -54,6 +70,11 @@ export function markTodayCompleted(): StreakState {
 
   const next: StreakState = { count: nextCount, lastCompletedDate: today };
   window.localStorage.setItem(STREAK_KEY, JSON.stringify(next));
+
+  const history = new Set(readStreakHistory());
+  history.add(today);
+  writeStreakHistory(Array.from(history).sort());
+
   window.dispatchEvent(new CustomEvent("mente-afinada-streak-changed"));
   return next;
 }

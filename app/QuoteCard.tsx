@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Quote } from "./lib/types";
+import FavoriteButton from "./FavoriteButton";
 
 export default function QuoteCard({ quote }: { quote: Quote }) {
   const [revealed, setRevealed] = useState(false);
@@ -114,6 +115,16 @@ export default function QuoteCard({ quote }: { quote: Quote }) {
           <Block label="Contexto">{quote.context}</Block>
         </div>
       )}
+
+      <div style={{ marginTop: "16px" }}>
+        <FavoriteButton
+          type="citacao"
+          id={`${quote.author}::${quote.book}`}
+          title={quote.text}
+          subtitle={`${quote.author}, ${quote.book}`}
+          size="sm"
+        />
+      </div>
     </article>
   );
 }

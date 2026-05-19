@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerRegister from "./ServiceWorkerRegister";
 import BottomNav from "./BottomNav";
+import PreferencesProvider from "./PreferencesProvider";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable}`}
     >
       <body>
+        <PreferencesProvider />
         <ServiceWorkerRegister />
         {children}
         <BottomNav />
