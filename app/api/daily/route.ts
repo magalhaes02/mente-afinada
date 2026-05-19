@@ -1,5 +1,8 @@
 import { buildPoolPayload } from "../../lib/daily-pool";
-import { generatePayloadWithGemini } from "../../lib/gemini";
+import {
+  generatePayloadWithGemini,
+  type DificuldadeServer,
+} from "../../lib/gemini";
 import type { DailyPayload } from "../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -13,14 +16,21 @@ function todayKeyLisbon(): string {
   }).format(new Date());
 }
 
-export async function GET() {
+function parseDificuldade(value: string | null): DificuldadeServer {
+  if (value === "basico" || value === "avancado") return value;
+  return "intermedio";
+}
+
+export async function GET(request: Request) {
   const dateKey = todayKeyLisbon();
   const apiKey = process.env.GEMINI_API_KEY;
+  const url = new URL(request.url);
+  const dificuldade = parseDificuldade(url.searchParams.get("dif"));
 
   if (apiKey) {
     try {
       const { word, challenge, quote, question, quiz } =
-        await generatePayloadWithGemini(dateKey, apiKey);
+        await generatePayloadWithGemini(dateKey, apiKey, dificuldade);
       const payload: DailyPayload = {
         generatedAt: new Date().toISOString(),
         dateKey,

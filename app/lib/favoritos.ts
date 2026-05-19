@@ -24,6 +24,8 @@ export type FavItem = {
   title: string;
   subtitle?: string;
   addedAt: string;
+  note?: string;
+  lists?: string[];
 };
 
 type FavStore = Record<string, FavItem>;
@@ -53,6 +55,11 @@ export function isFavorite(type: FavType, id: string): boolean {
   return Boolean(store[keyOf(type, id)]);
 }
 
+export function getFavorite(type: FavType, id: string): FavItem | undefined {
+  const store = readStore();
+  return store[keyOf(type, id)];
+}
+
 export function toggleFavorite(item: Omit<FavItem, "addedAt">): boolean {
   const store = readStore();
   const key = keyOf(item.type, item.id);
@@ -66,20 +73,38 @@ export function toggleFavorite(item: Omit<FavItem, "addedAt">): boolean {
   return true;
 }
 
-export function listFavorites(type?: FavType): FavItem[] {
+export function updateNote(type: FavType, id: string, note: string) {
   const store = readStore();
-  const all = Object.values(store);
-  const filtered = type ? all.filter((f) => f.type === type) : all;
-  return filtered.sort(
-    (a, b) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime()
-  );
+  const key = keyOf(type, id);
+  if (!store[key]) return;
+  store[key] = { ...store[key], note: note.trim() || undefined };
+  writeStore(store);
 }
 
-export function countByType(): Record<FavType, number> {
+export function setListsForItem(
+  type: FavType,
+  id: string,
+  lists: string[]
+) {
   const store = readStore();
-  const counts: Record<string, number> = {};
-  for (const item of Object.values(store)) {
-    counts[item.type] = (counts[item.type] ?? 0) + 1;
+  const key = keyOf(type, id);
+  if (!store[key]) return;
+  store[key] = { ...store[key], lists };
+  writeStore(store);
+}
+
+export function listFavorites(filters?: {
+  type?: FavType;
+  listId?: string;
+}): FavItem[] {
+  const store = readStore();
+  let all = Object.values(store);
+  if (filters?.type) all = all.filter((f) => f.type === filters.type);
+  if (filters?.listId) {
+    const id = filters.listId;
+    all = all.filter((f) => (f.lists ?? []).includes(id));
   }
-  return counts as Record<FavType, number>;
+  return all.sort(
+    (a, b) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime()
+  );
 }

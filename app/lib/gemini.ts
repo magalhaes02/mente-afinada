@@ -333,9 +333,21 @@ function parsePayloadJSON(text: string): {
   };
 }
 
+export type DificuldadeServer = "basico" | "intermedio" | "avancado";
+
+const DIFICULDADE_INSTRUCTIONS: Record<DificuldadeServer, string> = {
+  basico:
+    "NÍVEL BÁSICO: palavras de uso comum mas que muitos não definem com precisão (ex: estereótipo, premissa, empatia). Citações conhecidas, autores acessíveis. Conceitos do quotidiano. Perguntas filosóficas pessoais e diretas.",
+  intermedio:
+    "NÍVEL INTERMÉDIO (padrão): palavras de uso médio-alto, alguns termos mais densos. Citações de clássicos. Conceitos abstratos mas relevantes. Perguntas filosóficas com várias camadas.",
+  avancado:
+    "NÍVEL AVANÇADO: palavras menos comuns mas elegantes (ex: antinomia, hubris, maiêutica). Citações de autores mais densos (Wittgenstein, Heidegger, Adorno). Conceitos profundos. Perguntas filosóficas exigentes.",
+};
+
 export async function generatePayloadWithGemini(
   dateKey: string,
-  apiKey: string
+  apiKey: string,
+  dificuldade: DificuldadeServer = "intermedio"
 ): Promise<{
   word: Word;
   challenge: ExplainChallenge;
@@ -352,6 +364,8 @@ export async function generatePayloadWithGemini(
   });
 
   const userPrompt = `Gera o conteúdo de hoje (${lisbonDate}, chave: ${dateKey}).
+
+${DIFICULDADE_INSTRUCTIONS[dificuldade]}
 
 Surpreende o leitor com escolhas variadas. A palavra, o conceito do desafio e a citação devem ser de áreas DIFERENTES.`;
 

@@ -7,6 +7,8 @@ import WordCard from "./WordCard";
 import QuoteCard from "./QuoteCard";
 import PhilosophicalQuestionCard from "./PhilosophicalQuestionCard";
 import QuizSection from "./QuizSection";
+import { saveToHistory } from "./lib/historico";
+import { readPreferences } from "./lib/preferencias";
 
 const CACHE_KEY = "mente-afinada-daily";
 
@@ -53,6 +55,7 @@ export default function DailyContent() {
       Array.isArray(cached.quiz)
     ) {
       setData(cached);
+      saveToHistory(cached);
       setLoading(false);
       return;
     }
@@ -60,11 +63,15 @@ export default function DailyContent() {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch("/api/daily", { cache: "no-store" });
+        const dif = readPreferences().dificuldade;
+        const res = await fetch(`/api/daily?dif=${dif}`, {
+          cache: "no-store",
+        });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const payload = (await res.json()) as DailyPayload;
         if (cancelled) return;
         writeCache(payload);
+        saveToHistory(payload);
         setData(payload);
         setError(null);
       } catch (err) {

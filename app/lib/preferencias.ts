@@ -4,15 +4,18 @@ const PREFS_KEY = "mente-afinada-preferencias";
 
 export type Theme = "escuro" | "claro" | "papel";
 export type FontSize = "pequena" | "normal" | "grande" | "muito-grande";
+export type Dificuldade = "basico" | "intermedio" | "avancado";
 
 export type Preferencias = {
   theme: Theme;
   fontSize: FontSize;
+  dificuldade: Dificuldade;
 };
 
 const DEFAULTS: Preferencias = {
   theme: "escuro",
   fontSize: "normal",
+  dificuldade: "intermedio",
 };
 
 export function readPreferences(): Preferencias {
@@ -24,6 +27,8 @@ export function readPreferences(): Preferencias {
     return {
       theme: (parsed.theme as Theme) || DEFAULTS.theme,
       fontSize: (parsed.fontSize as FontSize) || DEFAULTS.fontSize,
+      dificuldade:
+        (parsed.dificuldade as Dificuldade) || DEFAULTS.dificuldade,
     };
   } catch {
     return DEFAULTS;
