@@ -2,19 +2,24 @@
 
 const PREFS_KEY = "mente-afinada-preferencias";
 
-export type Theme = "escuro" | "claro" | "papel";
+export type Theme = "escuro" | "claro" | "papel" | "alto-contraste";
 export type FontSize = "pequena" | "normal" | "grande" | "muito-grande";
+export type FontFamily = "default" | "dyslexic";
 export type Dificuldade = "basico" | "intermedio" | "avancado";
 
 export type Preferencias = {
   theme: Theme;
   fontSize: FontSize;
+  fontFamily: FontFamily;
+  reduceMotion: boolean;
   dificuldade: Dificuldade;
 };
 
 const DEFAULTS: Preferencias = {
   theme: "escuro",
   fontSize: "normal",
+  fontFamily: "default",
+  reduceMotion: false,
   dificuldade: "intermedio",
 };
 
@@ -27,6 +32,11 @@ export function readPreferences(): Preferencias {
     return {
       theme: (parsed.theme as Theme) || DEFAULTS.theme,
       fontSize: (parsed.fontSize as FontSize) || DEFAULTS.fontSize,
+      fontFamily: (parsed.fontFamily as FontFamily) || DEFAULTS.fontFamily,
+      reduceMotion:
+        typeof parsed.reduceMotion === "boolean"
+          ? parsed.reduceMotion
+          : DEFAULTS.reduceMotion,
       dificuldade:
         (parsed.dificuldade as Dificuldade) || DEFAULTS.dificuldade,
     };
@@ -48,4 +58,9 @@ export function applyToDocument(prefs: Preferencias) {
   if (typeof document === "undefined") return;
   document.documentElement.setAttribute("data-theme", prefs.theme);
   document.documentElement.setAttribute("data-font", prefs.fontSize);
+  document.documentElement.setAttribute("data-font-family", prefs.fontFamily);
+  document.documentElement.setAttribute(
+    "data-reduce-motion",
+    prefs.reduceMotion ? "true" : "false"
+  );
 }

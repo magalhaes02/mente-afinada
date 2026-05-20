@@ -11,6 +11,23 @@ import {
   type Stats,
 } from "../lib/conquistas";
 
+const SEEN_BADGES_KEY = "mente-afinada-badges-vistos";
+
+function readSeenBadges(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = window.localStorage.getItem(SEEN_BADGES_KEY);
+    return new Set(raw ? (JSON.parse(raw) as string[]) : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function writeSeenBadges(set: Set<string>) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(SEEN_BADGES_KEY, JSON.stringify(Array.from(set)));
+}
+
 export default function EstatisticasView() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [badges, setBadges] = useState<Badge[]>([]);
@@ -19,12 +36,28 @@ export default function EstatisticasView() {
     next: Nivel | null;
     progress: number;
   } | null>(null);
+  const [newlyEarned, setNewlyEarned] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const s = computeStats();
     setStats(s);
-    setBadges(computeBadges(s));
+    const b = computeBadges(s);
+    setBadges(b);
     setNivel(computeNivel(s));
+
+    const seen = readSeenBadges();
+    const justEarned = new Set<string>();
+    for (const badge of b) {
+      if (badge.earned && !seen.has(badge.id)) {
+        justEarned.add(badge.id);
+        seen.add(badge.id);
+      }
+    }
+    if (justEarned.size > 0) {
+      setNewlyEarned(justEarned);
+      writeSeenBadges(seen);
+    }
+
     const handler = () => {
       const s2 = computeStats();
       setStats(s2);
@@ -222,7 +255,7 @@ export default function EstatisticasView() {
           }}
         >
           {earnedBadges.map((b) => (
-            <BadgeCard key={b.id} badge={b} />
+            <BadgeCard key={b.id} badge={b} fresh={newlyEarned.has(b.id)} />
           ))}
         </div>
       )}
@@ -306,22 +339,48 @@ function StatCard({
   );
 }
 
-function BadgeCard({ badge }: { badge: Badge }) {
+function BadgeCard({ badge, fresh = false }: { badge: Badge; fresh?: boolean }) {
   return (
     <div
+      className={fresh ? "ma-celebrate" : ""}
       style={{
         padding: "14px",
         borderRadius: "14px",
         background: badge.earned
-          ? "linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(244, 114, 182, 0.08))"
+          ? fresh
+            ? "linear-gradient(135deg, rgba(245, 158, 11, 0.30), rgba(244, 114, 182, 0.20))"
+            : "linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(244, 114, 182, 0.08))"
           : "var(--card-bg)",
         border: badge.earned
-          ? "1px solid rgba(245, 158, 11, 0.45)"
+          ? fresh
+            ? "2px solid #fbbf24"
+            : "1px solid rgba(245, 158, 11, 0.45)"
           : "1px solid var(--card-border)",
         opacity: badge.earned ? 1 : 0.55,
         textAlign: "center",
+        position: "relative",
       }}
     >
+      {fresh && (
+        <span
+          className="ma-sans"
+          style={{
+            position: "absolute",
+            top: "-8px",
+            right: "-8px",
+            padding: "2px 8px",
+            borderRadius: "999px",
+            background: "linear-gradient(135deg, #f59e0b, #f472b6)",
+            color: "#fff",
+            fontSize: "10px",
+            fontWeight: 800,
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
+          }}
+        >
+          Novo
+        </span>
+      )}
       <div
         style={{
           fontSize: "32px",

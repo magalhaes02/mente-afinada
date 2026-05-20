@@ -11,6 +11,11 @@ import { CONCEITOS_POOL } from "./conceitos-pool";
 import { RETORICA_POOL } from "./retorica-pool";
 import { PROVERBIOS_POOL } from "./proverbios-pool";
 import { MARCOS_POOL } from "./marcos-pool";
+import { MITOS_POOL } from "./mitos-pool";
+import { DISCURSOS_POOL } from "./discursos-pool";
+import { HABITOS_POOL } from "./habitos-pool";
+import { CURIOSIDADES_POOL } from "./curiosidades-pool";
+import { GEOGRAFIA_POOL } from "./geografia-pool";
 import type { FavType } from "./favoritos";
 
 export type IndexEntry = {
@@ -188,6 +193,56 @@ export const GLOBAL_INDEX: IndexEntry[] = [
     haystack: `${m.name} ${m.year} ${m.place} ${m.whatHappened} ${m.whyMatters} ${m.legacy}`.toLowerCase(),
     themes: [],
     emoji: "🏛️",
+  })),
+  ...MITOS_POOL.map((m) => ({
+    type: "palavra" as FavType,
+    id: `mito-${m.id}`,
+    title: m.name,
+    subtitle: m.modernMeaning.slice(0, 100),
+    href: "/mitos",
+    haystack: `${m.name} ${m.story} ${m.modernMeaning} ${m.whenWeSay}`.toLowerCase(),
+    themes: [m.origin],
+    emoji: "🏛️",
+  })),
+  ...DISCURSOS_POOL.map((d) => ({
+    type: "citacao" as FavType,
+    id: `discurso-${d.id}`,
+    title: d.title,
+    subtitle: `${d.speaker} · ${d.date}`,
+    href: "/discursos",
+    haystack: `${d.title} ${d.speaker} ${d.excerpt} ${d.context} ${d.whyMarked}`.toLowerCase(),
+    themes: [],
+    emoji: "🎤",
+  })),
+  ...HABITOS_POOL.map((h) => ({
+    type: "conceito" as FavType,
+    id: `habito-${h.id}`,
+    title: h.name,
+    subtitle: h.principle.slice(0, 100),
+    href: "/habitos",
+    haystack: `${h.name} ${h.origin} ${h.principle} ${h.howToApply} ${h.example}`.toLowerCase(),
+    themes: [],
+    emoji: "🧩",
+  })),
+  ...CURIOSIDADES_POOL.map((c) => ({
+    type: "conceito" as FavType,
+    id: `curiosidade-${c.id}`,
+    title: c.title,
+    subtitle: c.fact.slice(0, 100),
+    href: "/curiosidades",
+    haystack: `${c.title} ${c.fact} ${c.whyMatters}`.toLowerCase(),
+    themes: [c.category],
+    emoji: "🌟",
+  })),
+  ...GEOGRAFIA_POOL.map((g) => ({
+    type: "marco" as FavType,
+    id: `geografia-${g.id}`,
+    title: g.title,
+    subtitle: g.factCorrected.slice(0, 100),
+    href: "/geografia",
+    haystack: `${g.title} ${g.factCorrected} ${g.whyConfusion}`.toLowerCase(),
+    themes: [g.category],
+    emoji: "🌍",
   })),
 ];
 

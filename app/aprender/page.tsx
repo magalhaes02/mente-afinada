@@ -12,6 +12,11 @@ import { CONCEITOS_POOL } from "../lib/conceitos-pool";
 import { RETORICA_POOL } from "../lib/retorica-pool";
 import { PROVERBIOS_POOL } from "../lib/proverbios-pool";
 import { MARCOS_POOL } from "../lib/marcos-pool";
+import { MITOS_POOL } from "../lib/mitos-pool";
+import { DISCURSOS_POOL } from "../lib/discursos-pool";
+import { HABITOS_POOL } from "../lib/habitos-pool";
+import { CURIOSIDADES_POOL } from "../lib/curiosidades-pool";
+import { GEOGRAFIA_POOL } from "../lib/geografia-pool";
 
 export const metadata = { title: "Aprender · Mente Afinada" };
 
@@ -142,6 +147,51 @@ const SECTIONS: Section[] = [
     gradient:
       "linear-gradient(135deg, rgba(216, 180, 254, 0.15), rgba(167, 139, 250, 0.08))",
   },
+  {
+    href: "/mitos",
+    icon: "🏛️",
+    title: "Mitos e arquétipos",
+    subtitle: "Sísifo, Prometeu, Pandora… histórias que ainda hoje usamos",
+    count: MITOS_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(253, 164, 175, 0.15), rgba(192, 132, 252, 0.08))",
+  },
+  {
+    href: "/discursos",
+    icon: "🎤",
+    title: "Discursos famosos",
+    subtitle: "JFK, Churchill, Mandela, Saramago no Nobel",
+    count: DISCURSOS_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(244, 114, 182, 0.08))",
+  },
+  {
+    href: "/habitos",
+    icon: "🧩",
+    title: "Hábitos mentais",
+    subtitle: "Occam, First Principles, Inversion, Premortem",
+    count: HABITOS_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(103, 232, 249, 0.15), rgba(168, 85, 247, 0.08))",
+  },
+  {
+    href: "/curiosidades",
+    icon: "🌟",
+    title: "Curiosidades surpreendentes",
+    subtitle: "Factos que viram a perspetiva sobre tempo, escala, mundo",
+    count: CURIOSIDADES_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(252, 211, 77, 0.15), rgba(244, 114, 182, 0.08))",
+  },
+  {
+    href: "/geografia",
+    icon: "🌍",
+    title: "Geografia cultural",
+    subtitle: "Capitais inesperadas, países que sumiram, fronteiras",
+    count: GEOGRAFIA_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(147, 197, 253, 0.15), rgba(52, 211, 153, 0.08))",
+  },
 ];
 
 export default function AprenderPage() {
@@ -184,10 +234,73 @@ export default function AprenderPage() {
               fontStyle: "italic",
             }}
           >
-            13 secções de conteúdo. Mais de {SECTIONS.reduce((a, s) => a + s.count, 0)}{" "}
-            entradas curadas.
+            {SECTIONS.length} secções · {SECTIONS.reduce((a, s) => a + s.count, 0)} entradas curadas.
           </p>
         </header>
+
+        <div
+          style={{
+            display: "grid",
+            gap: "10px",
+            gridTemplateColumns: "1fr 1fr",
+            marginBottom: "12px",
+          }}
+        >
+          <Link
+            href="/trilhas"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(103, 232, 249, 0.10))",
+              border: "1px solid rgba(52, 211, 153, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🛤️</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Trilhas
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Cursos curados por ordem pedagógica
+            </div>
+          </Link>
+          <Link
+            href="/encontrar-palavra"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(103, 232, 249, 0.18), rgba(34, 197, 94, 0.10))",
+              border: "1px solid rgba(103, 232, 249, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🔎</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Encontrar palavra
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Anti-dicionário com IA
+            </div>
+          </Link>
+        </div>
 
         <div
           style={{

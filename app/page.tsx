@@ -2,9 +2,28 @@ import Link from "next/link";
 import DailyContent from "./DailyContent";
 import StreakBadge from "./StreakBadge";
 import StreakCalendar from "./StreakCalendar";
+import Onboarding from "./Onboarding";
+import EfemerideBanner from "./EfemerideBanner";
+import Recapitulacao from "./Recapitulacao";
+
+function greetingForHour(hour: number): string {
+  if (hour < 6) return "Boa madrugada";
+  if (hour < 12) return "Bom dia";
+  if (hour < 19) return "Boa tarde";
+  return "Boa noite";
+}
 
 export default function Home() {
-  const todayLabel = new Date().toLocaleDateString("pt-PT", {
+  const now = new Date();
+  const hour = Number(
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Lisbon",
+      hour: "numeric",
+      hour12: false,
+    }).format(now)
+  );
+  const greeting = greetingForHour(hour);
+  const todayLabel = now.toLocaleDateString("pt-PT", {
     timeZone: "Europe/Lisbon",
     weekday: "long",
     day: "numeric",
@@ -51,7 +70,7 @@ export default function Home() {
                 border: "1px solid rgba(245, 158, 11, 0.3)",
               }}
             >
-              {todayLabel}
+              {greeting} · {todayLabel}
             </div>
             <h1
               style={{
@@ -148,6 +167,9 @@ export default function Home() {
           </Link>
         </div>
 
+        <EfemerideBanner />
+        <Recapitulacao />
+
         <DailyContent />
 
         <StreakCalendar />
@@ -165,6 +187,7 @@ export default function Home() {
           1 conceito · 1 palavra · 1 citação · 1 pergunta · quiz
         </footer>
       </section>
+      <Onboarding />
     </main>
   );
 }

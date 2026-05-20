@@ -4,6 +4,7 @@ import "./globals.css";
 import ServiceWorkerRegister from "./ServiceWorkerRegister";
 import BottomNav from "./BottomNav";
 import PreferencesProvider from "./PreferencesProvider";
+import KeyboardShortcuts from "./KeyboardShortcuts";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
         <ServiceWorkerRegister />
         {children}
         <BottomNav />
+        <KeyboardShortcuts />
       </body>
     </html>
   );

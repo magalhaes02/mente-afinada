@@ -4,6 +4,7 @@ import type { Word } from "./lib/types";
 import PronounceButton from "./PronounceButton";
 import FavoriteButton from "./FavoriteButton";
 import ConnectionsBlock from "./ConnectionsBlock";
+import CopyCard from "./CopyCard";
 
 export default function WordCard({ word }: { word: Word }) {
   return (
@@ -65,6 +66,18 @@ export default function WordCard({ word }: { word: Word }) {
           title={word.word}
           subtitle={word.formalDefinition}
           size="sm"
+        />
+        <CopyCard
+          label="Copiar"
+          formattedText={`${word.word}\n${word.formalDefinition}${
+            word.example ? `\n\nExemplo: "${word.example}"` : ""
+          }${
+            word.synonyms.length > 0
+              ? `\n\nSinónimos: ${word.synonyms
+                  .map((s) => `${s.word} (${s.nuance})`)
+                  .join("; ")}`
+              : ""
+          }`}
         />
       </div>
 

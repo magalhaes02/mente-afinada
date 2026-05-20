@@ -92,6 +92,76 @@ export default function ColecaoView() {
         style={{
           display: "grid",
           gap: "10px",
+          gridTemplateColumns: "1fr 1fr",
+          marginBottom: "10px",
+        }}
+      >
+        <Link
+          href="/progresso"
+          className="ma-press"
+          style={{
+            padding: "14px",
+            borderRadius: "14px",
+            background:
+              "linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(103, 232, 249, 0.08))",
+            border: "1px solid rgba(52, 211, 153, 0.3)",
+            color: "var(--fg)",
+            textDecoration: "none",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+          }}
+        >
+          <span style={{ fontSize: "22px", lineHeight: 1 }}>📈</span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "13px", fontWeight: 800 }}
+          >
+            Tu vs catálogo
+          </span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "11px", color: "var(--fg-muted)" }}
+          >
+            % por secção
+          </span>
+        </Link>
+        <Link
+          href="/nuvem"
+          className="ma-press"
+          style={{
+            padding: "14px",
+            borderRadius: "14px",
+            background:
+              "linear-gradient(135deg, rgba(103, 232, 249, 0.15), rgba(168, 85, 247, 0.08))",
+            border: "1px solid rgba(103, 232, 249, 0.3)",
+            color: "var(--fg)",
+            textDecoration: "none",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+          }}
+        >
+          <span style={{ fontSize: "22px", lineHeight: 1 }}>☁️</span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "13px", fontWeight: 800 }}
+          >
+            Nuvem
+          </span>
+          <span
+            className="ma-sans"
+            style={{ fontSize: "11px", color: "var(--fg-muted)" }}
+          >
+            Visualização
+          </span>
+        </Link>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gap: "10px",
           gridTemplateColumns: "1fr 1fr 1fr",
           marginBottom: "20px",
         }}
