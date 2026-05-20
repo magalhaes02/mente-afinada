@@ -88,6 +88,46 @@ export default function ColecaoView() {
 
   return (
     <div>
+      <Link
+        href="/dashboard"
+        className="ma-press"
+        style={{
+          display: "block",
+          padding: "18px",
+          borderRadius: "16px",
+          background:
+            "linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(244, 114, 182, 0.10))",
+          border: "1px solid rgba(245, 158, 11, 0.4)",
+          marginBottom: "10px",
+          color: "var(--fg)",
+          textDecoration: "none",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+          }}
+        >
+          <span style={{ fontSize: "28px", lineHeight: 1 }}>📊</span>
+          <div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Dashboard
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)" }}
+            >
+              Visão geral: nível, badges, estatísticas, atalhos
+            </div>
+          </div>
+        </div>
+      </Link>
+
       <div
         style={{
           display: "grid",

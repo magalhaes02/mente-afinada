@@ -2,7 +2,7 @@
 
 const PREFS_KEY = "mente-afinada-preferencias";
 
-export type Theme = "escuro" | "claro" | "papel" | "alto-contraste";
+export type Theme = "auto" | "escuro" | "claro" | "papel" | "alto-contraste";
 export type FontSize = "pequena" | "normal" | "grande" | "muito-grande";
 export type FontFamily = "default" | "dyslexic";
 export type Dificuldade = "basico" | "intermedio" | "avancado";
@@ -54,9 +54,18 @@ export function writePreferences(prefs: Partial<Preferencias>) {
   window.dispatchEvent(new CustomEvent("mente-afinada-prefs-changed"));
 }
 
+function resolveTheme(theme: Theme): string {
+  if (theme !== "auto") return theme;
+  if (typeof window === "undefined") return "escuro";
+  return window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "claro"
+    : "escuro";
+}
+
 export function applyToDocument(prefs: Preferencias) {
   if (typeof document === "undefined") return;
-  document.documentElement.setAttribute("data-theme", prefs.theme);
+  document.documentElement.setAttribute("data-theme", resolveTheme(prefs.theme));
   document.documentElement.setAttribute("data-font", prefs.fontSize);
   document.documentElement.setAttribute("data-font-family", prefs.fontFamily);
   document.documentElement.setAttribute(

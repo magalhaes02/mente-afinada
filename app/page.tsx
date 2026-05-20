@@ -5,6 +5,7 @@ import StreakCalendar from "./StreakCalendar";
 import Onboarding from "./Onboarding";
 import EfemerideBanner from "./EfemerideBanner";
 import Recapitulacao from "./Recapitulacao";
+import PinnedItems from "./PinnedItems";
 
 function greetingForHour(hour: number): string {
   if (hour < 6) return "Boa madrugada";
@@ -167,6 +168,7 @@ export default function Home() {
           </Link>
         </div>
 
+        <PinnedItems />
         <EfemerideBanner />
         <Recapitulacao />
 

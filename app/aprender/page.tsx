@@ -17,6 +17,7 @@ import { DISCURSOS_POOL } from "../lib/discursos-pool";
 import { HABITOS_POOL } from "../lib/habitos-pool";
 import { CURIOSIDADES_POOL } from "../lib/curiosidades-pool";
 import { GEOGRAFIA_POOL } from "../lib/geografia-pool";
+import { INVENTOS_POOL } from "../lib/inventos-pool";
 
 export const metadata = { title: "Aprender · Mente Afinada" };
 
@@ -192,6 +193,15 @@ const SECTIONS: Section[] = [
     gradient:
       "linear-gradient(135deg, rgba(147, 197, 253, 0.15), rgba(52, 211, 153, 0.08))",
   },
+  {
+    href: "/inventos",
+    icon: "🔧",
+    title: "Inventos que mudaram tudo",
+    subtitle: "Imprensa, vapor, eletricidade, antibióticos, internet",
+    count: INVENTOS_POOL.length,
+    gradient:
+      "linear-gradient(135deg, rgba(252, 211, 77, 0.15), rgba(103, 232, 249, 0.08))",
+  },
 ];
 
 export default function AprenderPage() {
@@ -247,30 +257,30 @@ export default function AprenderPage() {
           }}
         >
           <Link
-            href="/trilhas"
+            href="/gerar"
             className="ma-press"
             style={{
               padding: "16px 18px",
               borderRadius: "16px",
               background:
-                "linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(103, 232, 249, 0.10))",
-              border: "1px solid rgba(52, 211, 153, 0.35)",
+                "linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(103, 232, 249, 0.12))",
+              border: "1px solid rgba(168, 85, 247, 0.45)",
               textDecoration: "none",
               color: "var(--fg)",
             }}
           >
-            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🛤️</div>
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>✨</div>
             <div
               className="ma-sans"
               style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
             >
-              Trilhas
+              Gerar mais
             </div>
             <div
               className="ma-sans"
               style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
             >
-              Cursos curados por ordem pedagógica
+              IA expande qualquer secção
             </div>
           </Link>
           <Link
@@ -307,9 +317,100 @@ export default function AprenderPage() {
             display: "grid",
             gap: "10px",
             gridTemplateColumns: "1fr 1fr",
+            marginBottom: "12px",
+          }}
+        >
+          <Link
+            href="/trilhas"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(103, 232, 249, 0.10))",
+              border: "1px solid rgba(52, 211, 153, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🛤️</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Trilhas
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Cursos curados
+            </div>
+          </Link>
+          <Link
+            href="/cronologia"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(253, 164, 175, 0.10))",
+              border: "1px solid rgba(251, 191, 36, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>📅</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Cronologia
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Autores e marcos no tempo
+            </div>
+          </Link>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gap: "10px",
+            gridTemplateColumns: "1fr 1fr",
             marginBottom: "20px",
           }}
         >
+          <Link
+            href="/mapa"
+            className="ma-press"
+            style={{
+              padding: "16px 18px",
+              borderRadius: "16px",
+              background:
+                "linear-gradient(135deg, rgba(103, 232, 249, 0.18), rgba(192, 132, 252, 0.10))",
+              border: "1px solid rgba(103, 232, 249, 0.35)",
+              textDecoration: "none",
+              color: "var(--fg)",
+            }}
+          >
+            <div style={{ fontSize: "26px", lineHeight: 1, marginBottom: "6px" }}>🕸️</div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "15px", fontWeight: 800, marginBottom: "2px" }}
+            >
+              Mapa de conceitos
+            </div>
+            <div
+              className="ma-sans"
+              style={{ fontSize: "11px", color: "var(--fg-muted)", lineHeight: 1.4 }}
+            >
+              Tema central + conexões
+            </div>
+          </Link>
           <Link
             href="/procurar"
             className="ma-press"
