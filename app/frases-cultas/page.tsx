@@ -24,6 +24,8 @@ export default function FrasesCultasPage() {
       title="Frases cultas"
       subtitle="Latim e francês que aparecem em livros e textos cultos. Saber significar — e quando usar."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #a7f3d0 60%, #67e8f9 100%)"
+      tipo="frase"
+      existingTitles={FRASES_CULTAS_POOL.map((f) => f.phrase)}
     >
       <ContentList
         items={items}

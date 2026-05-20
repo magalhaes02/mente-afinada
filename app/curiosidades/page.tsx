@@ -23,6 +23,8 @@ export default function CuriosidadesPage() {
       title="Curiosidades surpreendentes"
       subtitle="Factos que viram a perspetiva. Distorcem o sentido de tempo, escala, e nuance — mas são verdadeiros."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #fcd34d 60%, #f472b6 100%)"
+      tipo="curiosidade"
+      existingTitles={CURIOSIDADES_POOL.map((c) => c.title)}
     >
       <ContentList items={items} favType="palavra" accent="rgba(252, 211, 77, 0.4)" />
     </ContentPage>

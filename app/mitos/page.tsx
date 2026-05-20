@@ -24,6 +24,8 @@ export default function MitosPage() {
       title="Mitos e arquétipos"
       subtitle="As histórias antigas que continuam a habitar a nossa linguagem e pensamento. Sísifo, Pandora, Ícaro — quem são, e o que dizemos hoje quando os citamos."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #fda4af 60%, #c084fc 100%)"
+      tipo="mito"
+      existingTitles={MITOS_POOL.map((m) => m.name)}
     >
       <ContentList items={items} favType="palavra" accent="rgba(253, 164, 175, 0.4)" />
     </ContentPage>

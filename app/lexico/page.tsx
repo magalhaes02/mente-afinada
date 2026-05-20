@@ -1,5 +1,6 @@
 import LexicoList from "./LexicoList";
 import { WORD_POOL } from "../lib/lexico-pool";
+import SectionTopBar from "../SectionTopBar";
 
 export const metadata = {
   title: "Léxico · Mente Afinada",
@@ -11,13 +12,17 @@ export default function LexicoPage() {
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top right, #1c1917, #0a0a14 50%, #020617)",
-        color: "#f5f5f4",
+          "radial-gradient(circle at top right, var(--bg-gradient-1), var(--bg-gradient-2) 50%, var(--bg-gradient-3))",
+        color: "var(--fg)",
         padding: "clamp(16px, 4vw, 40px)",
         paddingBottom: "calc(env(safe-area-inset-bottom) + 110px)",
       }}
     >
       <section style={{ maxWidth: "720px", margin: "0 auto" }}>
+        <SectionTopBar
+          tipo="palavra"
+          existingTitles={WORD_POOL.map((w) => w.word)}
+        />
         <header style={{ marginBottom: "24px" }}>
           <div
             className="ma-sans"
@@ -45,7 +50,7 @@ export default function LexicoPage() {
               margin: 0,
               fontWeight: 800,
               background:
-                "linear-gradient(135deg, #f5f5f4 0%, #d8b4fe 60%, #f9a8d4 100%)",
+                "linear-gradient(135deg, var(--serif-color) 0%, #d8b4fe 60%, #f9a8d4 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -58,7 +63,7 @@ export default function LexicoPage() {
             className="ma-sans"
             style={{
               margin: "10px 0 0 0",
-              color: "#a8a29e",
+              color: "var(--fg-muted)",
               fontSize: "clamp(13px, 3.6vw, 15px)",
               fontWeight: 500,
               lineHeight: 1.4,

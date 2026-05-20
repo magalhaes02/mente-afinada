@@ -33,6 +33,8 @@ export default function AutoresPage() {
       title="Autores essenciais"
       subtitle="Quem pensou o que. Mini-biografias de pensadores e escritores que ainda nos formam hoje."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #fda4af 60%, #e879f9 100%)"
+      tipo="autor"
+      existingTitles={AUTORES_POOL.map((a) => a.name)}
     >
       <ContentList items={items} favType="autor" accent="rgba(253, 164, 175, 0.4)" enableFilter={false} />
     </ContentPage>

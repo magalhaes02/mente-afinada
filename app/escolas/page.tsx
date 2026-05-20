@@ -30,6 +30,8 @@ export default function EscolasPage() {
       title="Escolas filosóficas"
       subtitle="Os grandes sistemas de pensamento — quando nasceram, quem os formou, e o que ainda nos dizem hoje."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #fbbf24 60%, #f59e0b 100%)"
+      tipo="escola"
+      existingTitles={ESCOLAS_POOL.map((e) => e.name)}
     >
       <ContentList items={items} favType="escola" accent="rgba(251, 191, 36, 0.4)" enableFilter={false} />
     </ContentPage>

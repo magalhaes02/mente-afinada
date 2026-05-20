@@ -1,5 +1,6 @@
 import CitacoesList from "./CitacoesList";
 import { QUOTE_POOL } from "../lib/citacoes-pool";
+import SectionTopBar from "../SectionTopBar";
 
 export const metadata = {
   title: "Citações · Mente Afinada",
@@ -11,13 +12,17 @@ export default function CitacoesPage() {
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top right, #1c1917, #0a0a14 50%, #020617)",
-        color: "#f5f5f4",
+          "radial-gradient(circle at top right, var(--bg-gradient-1), var(--bg-gradient-2) 50%, var(--bg-gradient-3))",
+        color: "var(--fg)",
         padding: "clamp(16px, 4vw, 40px)",
         paddingBottom: "calc(env(safe-area-inset-bottom) + 110px)",
       }}
     >
       <section style={{ maxWidth: "720px", margin: "0 auto" }}>
+        <SectionTopBar
+          tipo="citacao"
+          existingTitles={QUOTE_POOL.map((q) => `${q.author} - ${q.book}`)}
+        />
         <header style={{ marginBottom: "24px" }}>
           <div
             className="ma-sans"

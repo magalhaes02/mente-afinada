@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import SectionTopBar from "./SectionTopBar";
+import type { ConteudoTipo } from "./lib/conteudo-personalizado";
 
 export default function ContentPage({
   badge,
@@ -6,12 +8,20 @@ export default function ContentPage({
   subtitle,
   gradient,
   children,
+  tipo,
+  existingTitles,
+  backHref = "/aprender",
+  backLabel = "Aprender",
 }: {
   badge: string;
   title: string;
   subtitle: string;
   gradient: string;
   children: ReactNode;
+  tipo?: ConteudoTipo;
+  existingTitles?: string[];
+  backHref?: string;
+  backLabel?: string;
 }) {
   return (
     <main
@@ -25,6 +35,12 @@ export default function ContentPage({
       }}
     >
       <section style={{ maxWidth: "720px", margin: "0 auto" }}>
+        <SectionTopBar
+          backHref={backHref}
+          backLabel={backLabel}
+          tipo={tipo}
+          existingTitles={existingTitles}
+        />
         <header style={{ marginBottom: "24px" }}>
           <div
             className="ma-sans"

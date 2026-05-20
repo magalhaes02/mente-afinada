@@ -24,6 +24,8 @@ export default function DiscursosPage() {
       title="Discursos famosos"
       subtitle="Momentos retóricos que mudaram países, civis e instituições. Excerto, contexto e porquê continuam a importar."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #fbbf24 60%, #f472b6 100%)"
+      tipo="discurso"
+      existingTitles={DISCURSOS_POOL.map((d) => `${d.speaker} - ${d.title}`)}
     >
       <ContentList items={items} favType="palavra" accent="rgba(251, 191, 36, 0.4)" enableFilter={false} />
     </ContentPage>

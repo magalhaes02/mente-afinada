@@ -26,6 +26,8 @@ export default function GeografiaPage() {
       title="Geografia cultural"
       subtitle="Capitais inesperadas, países que sumiram, fronteiras estranhas. Para conversa e para deixar de errar em pequenas coisas."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #93c5fd 60%, #34d399 100%)"
+      tipo="geografia"
+      existingTitles={GEOGRAFIA_POOL.map((g) => g.title)}
     >
       <ContentList items={items} favType="palavra" accent="rgba(147, 197, 253, 0.4)" />
     </ContentPage>

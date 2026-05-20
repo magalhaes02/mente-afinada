@@ -24,6 +24,8 @@ export default function HabitosPage() {
       title="Hábitos mentais"
       subtitle="Modelos proativos de pensamento. Navalha de Occam, First Principles, Inversion, Premortem — ferramentas para decidir melhor."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #67e8f9 60%, #a855f7 100%)"
+      tipo="habito"
+      existingTitles={HABITOS_POOL.map((h) => h.name)}
     >
       <ContentList items={items} favType="palavra" accent="rgba(103, 232, 249, 0.4)" enableFilter={false} />
     </ContentPage>

@@ -8,6 +8,8 @@ export type ConteudoTipo =
   | "pergunta"
   | "falacia"
   | "vies"
+  | "escola"
+  | "autor"
   | "etimologia"
   | "frase"
   | "conceito"
@@ -15,10 +17,11 @@ export type ConteudoTipo =
   | "proverbio"
   | "marco"
   | "mito"
+  | "discurso"
+  | "habito"
   | "curiosidade"
   | "geografia"
-  | "invento"
-  | "habito";
+  | "invento";
 
 export type ConteudoGerado = {
   id: string;

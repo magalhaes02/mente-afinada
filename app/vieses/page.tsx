@@ -24,6 +24,8 @@ export default function ViesesPage() {
       title="Vieses cognitivos"
       subtitle="Erros sistemáticos do cérebro humano. Conhecê-los é o primeiro passo para os contornar."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #c084fc 60%, #a855f7 100%)"
+      tipo="vies"
+      existingTitles={VIESES_POOL.map((v) => v.name)}
     >
       <ContentList items={items} favType="vies" accent="rgba(192, 132, 252, 0.4)" />
     </ContentPage>

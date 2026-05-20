@@ -25,6 +25,8 @@ export default function EtimologiaPage() {
       title="Etimologia"
       subtitle="A origem secreta das palavras que usas todos os dias. Saber donde vêm cola muito melhor do que decorar a definição."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #93c5fd 60%, #38bdf8 100%)"
+      tipo="etimologia"
+      existingTitles={ETIMOLOGIA_POOL.map((e) => e.word)}
     >
       <ContentList items={items} favType="etimologia" accent="rgba(147, 197, 253, 0.4)" enableFilter={false} />
     </ContentPage>

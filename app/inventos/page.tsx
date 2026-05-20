@@ -23,6 +23,8 @@ export default function InventosPage() {
       title="Inventos que mudaram tudo"
       subtitle="As descobertas que reorganizaram a civilização. O que cada uma foi, e como ainda hoje vives das suas consequências."
       gradient="linear-gradient(135deg, var(--serif-color) 0%, #fcd34d 60%, #67e8f9 100%)"
+      tipo="invento"
+      existingTitles={INVENTOS_POOL.map((i) => i.name)}
     >
       <ContentList
         items={items}

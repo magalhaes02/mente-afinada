@@ -26,6 +26,8 @@ export default function ConceitosPage() {
       title="Conceitos científicos"
       subtitle="As ideias científicas que pessoas cultas dominam — explicadas em linguagem simples, sem perder o rigor."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #67e8f9 60%, #38bdf8 100%)"
+      tipo="conceito"
+      existingTitles={CONCEITOS_POOL.map((c) => c.name)}
     >
       <ContentList items={items} favType="conceito" accent="rgba(103, 232, 249, 0.4)" />
     </ContentPage>

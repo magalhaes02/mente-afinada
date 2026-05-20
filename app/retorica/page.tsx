@@ -23,6 +23,8 @@ export default function RetoricaPage() {
       title="Argumentação retórica"
       subtitle="As ferramentas usadas em discursos, debates e textos formais — herdadas de Aristóteles, atualizadas para hoje."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #fcd34d 60%, #fb923c 100%)"
+      tipo="retorica"
+      existingTitles={RETORICA_POOL.map((r) => r.name)}
     >
       <ContentList
         items={items}

@@ -23,6 +23,8 @@ export default function MarcosPage() {
       title="Marcos históricos"
       subtitle="Os acontecimentos que mudaram o mundo. O que se passou e por que ainda nos afeta hoje."
       gradient="linear-gradient(135deg, #f5f5f4 0%, #d8b4fe 60%, #a78bfa 100%)"
+      tipo="marco"
+      existingTitles={MARCOS_POOL.map((m) => m.name)}
     >
       <ContentList items={items} favType="marco" accent="rgba(216, 180, 254, 0.4)" enableFilter={false} />
     </ContentPage>

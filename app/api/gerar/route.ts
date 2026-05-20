@@ -101,6 +101,24 @@ const PROMPTS: Record<string, { systemPrompt: string; itemSchema: string }> = {
     itemSchema:
       '{"name":"Nome","origin":"Origem","principle":"Princípio em 1-2 frases.","howToApply":"Como aplicar.","example":"Exemplo concreto.","warning":"Aviso (opcional)"}',
   },
+  escola: {
+    systemPrompt:
+      "Geras escolas filosóficas com contexto. Exemplos: Estoicismo, Niilismo, Existencialismo. Foco em escolas reais e bem documentadas.",
+    itemSchema:
+      '{"name":"Nome","period":"Quando existiu","origin":"Origem geográfica/cultural","thinkers":["Pensador 1","Pensador 2","Pensador 3"],"centralIdeas":["Ideia 1","Ideia 2","Ideia 3"],"todayValue":"Porquê ainda interessa hoje.","motto":"Lema da escola (opcional)"}',
+  },
+  autor: {
+    systemPrompt:
+      "Geras mini-biografias de autores essenciais. Pessoa, Saramago, Nietzsche, Kant. Foco em autores reais e relevantes.",
+    itemSchema:
+      '{"name":"Nome do autor","years":"Anos vivido (ex: 1844 — 1900)","origin":"País/contexto","essentialWorks":[{"title":"Obra 1","year":"Ano"},{"title":"Obra 2"}],"centralIdea":"Ideia central, 2-3 frases.","whyMatters":"Porquê ainda importa.","signatureQuote":"Frase emblemática (opcional)"}',
+  },
+  discurso: {
+    systemPrompt:
+      "Geras descrições de discursos famosos da história — JFK, Mandela, MLK, Churchill, e outros. Apenas discursos REAIS verificáveis.",
+    itemSchema:
+      '{"title":"Título do discurso","speaker":"Orador","date":"Data","place":"Local","excerpt":"Excerto exato","context":"Contexto histórico, 2-3 frases.","whyMarked":"Porquê marcou, 2-3 frases."}',
+  },
 };
 
 type GeminiResponse = {
